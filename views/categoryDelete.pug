@@ -1,0 +1,14 @@
+extends layout
+
+block content
+        form(action="/products/#{category._id}/delete" method="POST")
+        hr
+        h5 Êtes-vous sûr de vouloir supprimer ce rayon ?
+        p
+        div
+            button(type="submit")
+                a(href='/categories/') Oui
+        p
+        div
+            button(type="submit")
+                a(href='/categories/') Non

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    form(action="/categories/#{category._id}/update" method="POST")
+        div.form-group
+            label(for='name') Nom:
+            input#name.form-control(type='text' name='name' required='true' value=(categories.name) )
+        button
+            a(href='/categories') Modifier
+

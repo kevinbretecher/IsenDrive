@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    each product in products
+        form(action="/products/#{product._id}/update" method="POST")
+            hr
+            div.form-group
+                label(for='name') Nom du produit :
+                input#name.form-control(type='text' name='name' required='true' value=product.name)
+
+            div.form-group
+                label(for='category') Rayon:
+                select#category.form-control(name='category' required='true')
+                    for category in categories
+                        option(value=category._id) #{category.name}
+
+            div.form-group
+                label(for='description') Description du produit :
+                input#description.form-control(name='description' rows=10 required='true' value=product.description)
+
+            div.form-group
+                label(for='price') Prix:
+                input#price.form-control(type='number' name='price' required='true' step='.01' value=product.price)
+
+            div
+                button(type="submit")
+                    a(href='/products/' + product._id) Modifier
+    else
+        p Produit inexistant
+    hr
+    p
+        each product in products
+            a.inline-10(href='/products/' + product._id + '/delete') Supprimer le produit
